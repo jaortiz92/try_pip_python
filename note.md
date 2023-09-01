@@ -24,7 +24,13 @@ Dependencias en entorno profesional
 
 - apt install -y build-essential libssl-dev libffi-dev python3-dev
 
-### Git
+## Git
 - git init
 - git remote add origin <URL>
 - git remote -v (Ver las rutas remote)
+- git pus origin master (Cargar informacion a git)
+## gitignore
+- https://www.toptal.com/developers/gitignore generar el git segun nuestras necesidades
+    - windows
+    - linux
+    - python
