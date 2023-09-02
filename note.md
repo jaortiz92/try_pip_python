@@ -34,3 +34,8 @@ Dependencias en entorno profesional
     - windows
     - linux
     - python
+
+## Pip
+- Info: pypi.org
+- pip install pack
+- pip freeze -> packs installed
