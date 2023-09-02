@@ -46,7 +46,10 @@ def generate_line_chart(
 def generate_pie_chart(labels, values, title, name):
     plt.style.use('seaborn')
     fig, ax = plt.subplots(1,1)
-    ax.pie(values, labels=labels)
+    ax.pie(
+        values, labels=labels, 
+        autopct='%1.1f%%'
+    )
     fig.suptitle(
         title,
         fontsize='large',
@@ -54,7 +57,6 @@ def generate_pie_chart(labels, values, title, name):
         fontweight='bold'
     )
     ax.axis('equal')
-    ax.legend()
     plt.savefig(PATH + name + '.png')
 
 

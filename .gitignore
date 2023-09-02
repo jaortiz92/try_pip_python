@@ -218,3 +218,6 @@ $RECYCLE.BIN/
 
 # Images
 *.png
+
+#Files
+*.csv
