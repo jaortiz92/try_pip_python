@@ -10,7 +10,7 @@ python3 main.py
 # Project charts
 
 ```sh
-git clone
+git clone https://github.com/jaortiz92/try_pip_python.git
 cd project_charts
 python3 -m venv env
 source env/bin/activate
