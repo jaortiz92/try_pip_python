@@ -3,7 +3,8 @@ from app.charts import generate_line_chart
 from app.input_options import get_text
 from app.utils_csv import (
     read_csv, filter_data, extract_population,
-    read_and_filter
+    read_and_filter, read_csv_with_pandas, filter_with_pandas,
+    get_population_columns
 )
 
 @time_execution_print
@@ -23,13 +24,21 @@ def option_2(path, country):
         data = extract_population(data)
     return data
 
+@time_execution_print
+def option_3(path, country):
+    data = read_csv_with_pandas(path)
+    data = filter_with_pandas(data, 'Country/Territory', country)
+    if not isinstance(data, type(None)):
+        data = get_population_columns(data)
+    return data
 
 def run(path):
     country = get_text(
         'Select a country: '
     )
     option_1(path, country)
-    data = option_2(path, country)
+    option_2(path, country)
+    data = option_3(path, country)
     if data:
         generate_line_chart(
             labels=list(data.keys())[::-1],

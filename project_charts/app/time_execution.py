@@ -15,6 +15,6 @@ def time_execution_print(function):
         c = function(*arg, **kwargs)
         end = time.time()
         interval = end - start
-        print(interval)
+        print(function.__name__, interval)
         return c
     return function_time

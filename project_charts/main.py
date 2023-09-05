@@ -1,16 +1,25 @@
 from app.time_execution import time_execution_print
 from app.charts import generate_bar_chart, generate_pie_chart
 from app.utils_csv import (
-    read_csv, select_column, group_countries, sort_values
+    read_csv, select_column, group_countries, sort_values,
+    read_csv_with_pandas, filter_with_pandas
 )
 from app.input_options import get_number, get_text_from_list
 
 @time_execution_print
-def get_data(path):
+def get_data_csv(path):
     data = read_csv(path)
     labels = select_column(data, 'Country/Territory')
     values = select_column(data, 'World Population Percentage', True)
     return labels, values
+
+@time_execution_print
+def get_data_pd(path):
+    data = read_csv_with_pandas(path)
+    labels = data['Country/Territory']
+    values = data['World Population Percentage']
+    return labels, values
+
 
 def run(path):
     list_charts = ['bar', 'pie']
@@ -25,7 +34,8 @@ Los países con valores inferiores se agruparán bajo la opción 'Otros'.
 Por favor, escriba solo el número porcentual sin ningún tipo de signo. Ejemplo: 10: '''
     )
 
-    labels, values = get_data(path)
+    labels, values = get_data_pd(path)
+    labels, values = get_data_csv(path)
     labels, values = group_countries(labels, values, min_value)
     labels, values = sort_values(labels, values)
     if values:

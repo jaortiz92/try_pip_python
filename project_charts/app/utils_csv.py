@@ -1,5 +1,6 @@
 import csv
 import re
+import pandas as pd
 
 def read_csv(path):
     with open(path, 'r', encoding='utf-8') as file:
@@ -62,3 +63,30 @@ def sort_values(labels, values, asc=False):
     list_data = list(zip(labels, values))
     list_data.sort(key=method, reverse=asc)
     return list(zip(*list_data))
+
+
+def read_csv_with_pandas(path):
+    df = pd.read_csv(path)
+    return df
+
+def filter_with_pandas(df, filter_column, filter_value):
+        df = df[df[filter_column] == filter_value]
+        if df.shape[0] > 0:
+            return df.reset_index(drop=True)
+        else:
+            None
+
+def get_population_columns(df):
+    parameter = '([0-9]+) Population'
+    columns = df.columns
+    population_columns = []
+    new_name_columns = []
+    for column in columns:
+        match = re.match(parameter, column)
+        if match:
+            population_columns.append(column)
+            new_name_columns.append(int(match.group(1)))
+    df = df.rename(
+        columns={k: v for k, v in zip(population_columns, new_name_columns)}
+    )
+    return df.loc[0, new_name_columns].to_dict()
