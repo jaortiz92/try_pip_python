@@ -39,3 +39,20 @@ Dependencias en entorno profesional
 - Info: pypi.org
 - pip install pack
 - pip freeze -> packs installed
+
+## Ambientes Virtuales
+- which python -> Indica la ruta de donde se ejecuta (Python) el programa indicado
+- Instalar
+    - python3 -m pip install --user virtualenv
+    - pip freeze | grep virtualenv -> Validar instalación
+- Crear entorno
+    - python3 -m venv /path/to/new/virtual/environment
+- Activar entorno
+    - source /path/virtual/environment/bin/activate
+- Desactivar entorno
+    - deactivate
+- Guardar las dependencias instaladas
+    - pip freeze > requirements.txt
+- Usar requirements.txt
+    - pip install -r requirements.txt
+    
