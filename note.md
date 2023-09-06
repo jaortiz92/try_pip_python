@@ -56,3 +56,21 @@ Dependencias en entorno profesional
 - Usar requirements.txt
     - pip install -r requirements.txt
     
+## FastAPI
+- pip install fastapi
+- pip install "uvicorn[standard]"
+
+## Docker
+- Pasos
+    1. Crear dockefile
+    2. Crear docker-compose.yml
+    3. docker-compose build -> Construir el compose
+    4. docker-compose up -d -> Correr el proceso
+    5. docker-compose ps -> Ver los procesos activos
+    6. docker-compose exec app-name bash -> Entrar al servicio a la terminal
+    7. docker-compose down -> Para matar el servicio
+- Update_script
+    1. Add Volumenes al docker-compose
+        - volumes:
+            - .:/app
+    2. docker-compose up -d -> Correr el proceso

@@ -1,0 +1,8 @@
+services:
+  app-charts:
+    build: 
+      context: .
+      dockerfile: dockerfile
+    volumes:
+            - .:/app
+    
