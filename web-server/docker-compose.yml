@@ -1,0 +1,9 @@
+services:
+  web-server:
+    build: 
+      context: .
+      dockerfile: dockerfiledocker-compose up -d
+    volumes:
+      - .:/app
+    ports:
+      - '81:80'
